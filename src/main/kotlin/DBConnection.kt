@@ -15,6 +15,11 @@ class DBConnection {
     private var statement: Statement? = null
 
     init {
-        connection.createStatement()
+        Class.forName(JDBC_DRIVER)
+        statement = connection.createStatement()
+        val result = statement?.executeQuery("CREATE TABLE JAEMIN;")
+        println("Result: $result")
+        statement?.close()
+        connection.close()
     }
 }
