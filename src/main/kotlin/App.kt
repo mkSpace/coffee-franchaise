@@ -1,7 +1,10 @@
+import db.DBConnection
 import di.Injection
 
-fun main(args: Array<String>) {
-    val view = Injection.provideMainView()
-    view.setupViews()
-    DBConnection()
+object App {
+    @JvmStatic fun main(args: Array<String>) {
+        DBConnection.createTableIfNotExists()
+        val view = Injection.provideMainView()
+        view.setupViews()
+    }
 }
